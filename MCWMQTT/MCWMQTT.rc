@@ -1,0 +1,54 @@
+STRINGTABLE DISCARDABLE 
+BEGIN
+1000 "MCWMQTT"
+
+// Object descriptions
+2000 "MCWMQTT:Objeto de interação com um broker MQTT."
+
+6000 "$setaddress:$setaddress(address) Sets the address of the broker."
+6001 "$settimeout:$settimeout(timeout) Sets the timeout for publish operations."
+6002 "$setclientid:$setclientid(clientid) Set the client id."
+6003 "$settopic:$settopic(topic) Set the topic."
+6004 "$setqos:$setqos(qos) Set quality of service (QoS)."
+6005 "$setusername:$setusername(username) Set the username."
+6006 "$setpassword:$setpassword(password) Set the password."
+6007 "$setkeepaliveinterval:$setkeepaliveinterval(keepaliveinterval) Set the keep alive interval."
+6008 "$setcleanstart:$setcleanstart(cleanstart) Set the clean start option."
+6009 "$connect:$connect() Connects to the server."
+6010 "$disconnect:$disconnect() Disconnects from the server."
+6011 "$publish:$publish(message) Publishes one message."
+6012 "$setretained:$setretained(retained) Set the retained flag."
+6013 "$setconnecttimeout:$setconnecttimeout(connecttimeout) Set the value, in seconds, of the connection timeout."
+6014 "$setsessionexpiryinterval:$setsessionexpiryinterval(sessionexpiryinterval) Set the value of the Session Expiry Interval."
+6015 "$setmessageexpiryinterval:$setmessageexpiryinterval(messageexpiryinterval) Set the value of the Message Expiry Interval."
+6016 "$setautomaticreconnect:$setautomaticreconnect(automaticreconnect) Enable or disable automatic reconnect."
+6017 "$geterrormessage:$geterrormessage() Returns the error message from the last operation with error."
+6018 "$getisconnected:$getisconnected() Returns whether the client is connected."
+
+// Parameters description
+7000 "address:Address of the MQTT broker"
+7001 "timeout:Timeout (seconds) used for publish and disconnect operations (defaults to 10 seconds)"
+7002 "clientid:identification of the client"
+7003 "topic:Topic name"
+7004 "qos:Quality of service (defaults to QoS1)"
+7005 "username:Name of the user"
+7006 "password:Password"
+7007 "keepaliveinterval:Keep alive interval (defaults to 60 seconds)"
+7008 "cleanstart:Clean start (defaults to false)"
+7009 "message:Message to be published"
+7010 "retained:Indicates that the MQTT server should retain a copy of the last message (defaults to false)"
+7011 "connecttimeout:Maximum time (seconds) allowed for establishing a connection (defaults to 30 seconds)"
+7012 "sessionexpiryinterval:The time in seconds that the session will remain in the server after disconnecting (defaults to 0)"
+7013 "messageexpiryinterval:The time in seconds that the message will remain in the server (Not set by default)"
+7014 "automaticreconnect:Indicates if the client reconnect automatically  (defaults to false)"
+
+// Constants
+19999 "kMQTTQoS" // Constants prefix
+
+20000 "0:0:QoS0:Fire and forget"
+20001 "1:1:QoS1:At least once"
+20002 "2:2:QoS2:Once and one only"
+
+31000 "MCWMQTTWndProc"
+END
+

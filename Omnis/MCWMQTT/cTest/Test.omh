@@ -1,0 +1,39 @@
+
+Do lvoMQTT.$setaddress("tcp://localhost:1883")
+Do lvoMQTT.$settimeout(10)
+Do lvoMQTT.$settopic("TestsTopic")
+Do lvoMQTT.$setqos(kMQTTQoS1)
+# Do lvoMQTT.$setusername("username")
+# Do lvoMQTT.$setpassword("password")
+Do lvoMQTT.$setcleanstart(kFalse)
+Do lvoMQTT.$setkeepaliveinterval(15)
+Do lvoMQTT.$setclientid("OmnisClient")
+Do lvoMQTT.$setretained(kFalse)
+Do lvoMQTT.$setconnecttimeout(10)
+Do lvoMQTT.$setsessionexpiryinterval(60*60)
+Do lvoMQTT.$setmessageexpiryinterval(60*60*24)
+Do lvoMQTT.$setautomaticreconnect(kTrue)
+
+Do lvoMQTT.$connect() Returns lvbOk
+If not(lvbOk)
+	Do lvoMQTT.$geterrormessage() Returns lvcMsg
+	Do $ctask.$showmessage(lvcMsg,"Error")
+	Quit method
+End If
+
+Do lvoMQTT.$getisconnected() Returns lvbConnected
+If not(lvbConnected)
+	Do $ctask.$showmessage("Not Connected!")
+	Quit method
+End If
+
+For lvnLoop from 1 to 2 step 1
+	Do lvoMQTT.$publish(con("Message from Omnis xcomp on ",omnistoiso8601(loctoutc(#D),kTrue)," #",lvnLoop)) Returns lvbOk
+	If not(lvbOk)
+		Do $ctask.$showmessage(lvoMQTT.$geterrormessage(),"Erro")
+		Break to end of loop
+	End If
+End For
+
+Do lvoMQTT.$disconnect()
+Do $ctask.$showmessage("Done!")
